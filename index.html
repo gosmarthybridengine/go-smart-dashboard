@@ -3,546 +3,365 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#061329">
 <title>GO SMART HYBRID ENGINE</title>
-
 <style>
 :root{
-  --bg:#061329;
-  --panel:#0b1d39;
-  --panel2:#0d2547;
-  --blue:#087dff;
-  --cyan:#20d9ff;
-  --line:#174d83;
-  --text:#f4f8ff;
-  --muted:#a9bfdc;
-  --green:#00e6a0;
-  --red:#ff5369;
-  --gold:#ffca55;
+  --bg:#061329;--panel:#0a1d38;--panel2:#102b4d;
+  --blue:#087dff;--cyan:#20d9ff;--line:#23578b;
+  --text:#f4f8ff;--muted:#a9bfdc;
+  --green:#00e6a0;--red:#ff5369;--gold:#ffca55;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  padding:0 0 calc(105px + env(safe-area-inset-bottom));
-  background:
-    radial-gradient(ellipse at 5% 0%,#092c57 0,transparent 35%),
-    radial-gradient(ellipse at 100% 35%,#071d40 0,transparent 35%),
-    var(--bg);
-  color:var(--text);
-  font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;
-  font-size:14px;
+  margin:0;color:var(--text);
+  background:radial-gradient(ellipse at top,#0c2850,transparent 48%),var(--bg);
+  font:14px system-ui,-apple-system,Segoe UI,sans-serif;
+  padding-bottom:calc(88px + env(safe-area-inset-bottom));
 }
 button,input,select{font:inherit}
 button{cursor:pointer}
 button:focus-visible,input:focus-visible,select:focus-visible{
-  outline:2px solid var(--cyan);
-  outline-offset:2px;
+  outline:2px solid var(--cyan);outline-offset:2px
 }
-button:disabled{opacity:.5;cursor:not-allowed}
 header{
-  position:relative;
-  overflow:visible;
-  padding:19px 15px 17px;
+  position:relative;overflow:visible;
+  padding:16px 14px 13px;
+  background:linear-gradient(110deg,#071329,#0c2850,#071329);
   border-bottom:1px solid var(--line);
-  background:linear-gradient(110deg,#061329,#0a2042 65%,#071329);
 }
-.header-art{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-  pointer-events:none;
-  opacity:.18;
-  background:
-    repeating-linear-gradient(90deg,transparent 0 24px,#087dff 25px 26px,transparent 27px 49px);
-  mask-image:linear-gradient(to bottom,black,transparent);
-}
-.watermark{
-  position:absolute;
-  bottom:0;
-  font-size:35px;
-  font-weight:1000;
-  letter-spacing:3px;
-  color:#5eb8ff;
-  opacity:.10;
-  pointer-events:none;
-}
-.watermark.left{left:8px}
-.watermark.right{right:8px;color:#ff788a}
-.header-row{
-  position:relative;
-  display:flex;
-  align-items:flex-start;
-  gap:10px;
-}
-.brand-icon{
-  flex:0 0 42px;
-  width:42px;
-  height:42px;
-  color:var(--cyan);
-}
-.brand{min-width:0;flex:1}
-.brand h1{
-  font-size:clamp(18px,5vw,25px);
-  line-height:1.1;
-  margin:1px 0 5px;
-  font-weight:1000;
-  letter-spacing:.2px;
-}
-.brand h1 span{color:var(--cyan)}
-.brand p{
-  margin:0;
-  color:#c0d5f2;
-  font-size:10px;
-  letter-spacing:1.1px;
-  font-weight:650;
-}
-.menu-wrap{position:relative;flex:0 0 auto}
-.icon-button{
-  width:42px;height:42px;
+.brandrow{display:flex;align-items:center;gap:10px}
+.logo{
+  width:43px;height:43px;flex-shrink:0;
+  border:1px solid #1688ff;border-radius:12px;
   display:grid;place-items:center;
-  border:1px solid #285582;
-  background:#0d2443;
-  color:white;
-  border-radius:11px;
-  font-size:25px;
-  font-weight:900;
+  background:#0b2445;color:var(--cyan);
+}
+.logo svg{width:31px;height:31px}
+.brand{flex:1;min-width:0}
+.brand h1{margin:0;font-size:clamp(17px,4.7vw,24px);font-weight:1000;line-height:1.15}
+.brand h1 span{color:var(--cyan)}
+.brand p{margin:5px 0 0;color:#bfd5f1;font-size:9px;letter-spacing:.8px}
+.menu{position:relative}
+.menu-button{
+  height:42px;width:42px;border-radius:11px;
+  border:1px solid #285582;background:#102747;
+  color:white;font-size:26px;font-weight:900;
 }
 .dropdown{
-  display:none;
-  position:absolute;
-  z-index:20;
-  top:48px;right:0;
-  width:210px;
-  background:#0b1d38;
-  border:1px solid #28639b;
-  border-radius:12px;
-  padding:7px;
-  box-shadow:0 15px 35px #0009;
+  display:none;position:absolute;z-index:60;
+  top:48px;right:0;width:215px;padding:6px;
+  background:#0a1d38;border:1px solid var(--line);
+  border-radius:12px;box-shadow:0 12px 30px #0009;
 }
 .dropdown.open{display:block}
 .dropdown button{
-  display:block;width:100%;text-align:left;
-  background:transparent;color:var(--text);
-  border:0;border-radius:7px;padding:12px;
+  display:flex;align-items:center;gap:10px;
+  width:100%;padding:12px;border:0;border-radius:8px;
+  text-align:left;background:transparent;color:white;
 }
-.dropdown button:hover{background:#17395f}
+.dropdown button:hover{background:#153658}
+.watermarks{
+  position:absolute;inset:0;overflow:hidden;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 8px;pointer-events:none;z-index:0;
+  opacity:.07;font-size:32px;font-weight:1000;
+}
+.brandrow,.demo{position:relative;z-index:1}
 .demo{
-  position:relative;
-  display:flex;
-  gap:10px;
-  align-items:center;
-  margin:14px 0 0;
-  padding:11px 12px;
-  background:#282411;
-  border:1px solid #a98322;
-  border-radius:10px;
+  display:flex;gap:9px;align-items:center;
+  margin-top:13px;padding:10px;
+  background:#292412;border:1px solid #8b702b;border-radius:10px;
 }
-.demo-icon{font-size:22px;color:var(--gold)}
-.demo strong{color:var(--gold);font-size:12px}
-.demo p{margin:2px 0 0;font-size:11px;color:#f1e7c6;line-height:1.45}
-main{max-width:1100px;margin:auto;padding:13px 12px}
+.demo .warn{font-size:20px;color:var(--gold)}
+.demo strong{font-size:11px;color:var(--gold)}
+.demo p{font-size:10px;line-height:1.5;margin:3px 0 0;color:#f0e5c2}
+main{max-width:1050px;margin:auto;padding:12px}
+.screen{display:none}
+.screen.active{display:block}
 .panel{
-  border:1px solid var(--line);
-  background:linear-gradient(145deg,#0b203d,#07172e);
-  border-radius:14px;
-  padding:13px;
-  margin-bottom:13px;
-  box-shadow:0 5px 18px #0002;
+  padding:13px;margin-bottom:12px;min-width:0;
+  border:1px solid var(--line);border-radius:14px;
+  background:linear-gradient(145deg,#0c2342,#08172e);
+  box-shadow:0 5px 16px #0002;
 }
-.section-heading{
+.heading{
   display:flex;align-items:center;gap:9px;
-  margin:0 0 13px;
-  font-size:17px;font-weight:900;
+  margin:0 0 13px;font-size:16px;font-weight:950;
 }
-.section-heading .symbol{font-size:22px;color:var(--cyan)}
-.section-heading .right{margin-left:auto}
-.small-muted{color:var(--muted);font-size:11px;font-weight:500}
-.market-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:9px;
+.heading-icon{color:var(--cyan);font-size:21px}
+.muted{color:var(--muted)}
+.small{font-size:10px}
+.marketgrid,.statsgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.metric,.stat,.info{
+  min-width:0;padding:11px;
+  background:#0a1c35;border:1px solid #244e7c;border-radius:11px;
 }
-.metric{
-  min-width:0;
-  position:relative;
-  overflow:hidden;
-  padding:12px 10px;
-  border:1px solid #20538a;
-  border-radius:11px;
-  background:linear-gradient(135deg,#0e2b50,#081a33);
-}
-.metric.vix{border-color:#8c344c}
-.metric-label{
-  font-size:12px;
-  font-weight:800;
-  color:#cbdcf3;
-  line-height:1.4;
-}
-.metric-value{
-  font-size:clamp(19px,5vw,26px);
-  font-weight:1000;
-  margin:8px 0 4px;
-  overflow-wrap:anywhere;
-}
-.metric-note{font-size:10px;color:var(--muted)}
-.metric .trend{color:var(--cyan);font-size:11px;font-weight:800}
-.split-grid{
-  display:grid;grid-template-columns:1fr;gap:9px;margin-top:10px;
-}
-.bias-card,.breadth-card{
-  min-width:0;
-  border:1px solid #1e5d96;
-  background:#091b35;
-  border-radius:11px;
-  padding:13px;
-}
-.card-label{
-  color:#c7d9f1;
-  font-size:12px;font-weight:700;
-  margin-bottom:7px;
-}
-.bias-value{font-size:23px;font-weight:1000;color:var(--gold);overflow-wrap:anywhere}
-.status-pill{
-  display:inline-block;margin-top:5px;
-  padding:4px 7px;border-radius:6px;
-  background:#162e4b;color:#b9d2ee;
-  font-size:10px;font-weight:800;
-}
-.stats-grid{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:9px;margin-top:10px;
-}
-.stat{
-  min-width:0;border:1px solid #20538a;
-  border-radius:10px;background:#0a1b34;padding:11px 9px;
-}
-.stat-label{font-size:10px;color:#c3d7ef;line-height:1.5}
-.stat-value{font-size:22px;font-weight:1000;margin:4px 0;overflow-wrap:anywhere}
+.metric-label{font-size:11px;font-weight:800;color:#cbdcf3}
+.metric-value{font-size:clamp(20px,5vw,26px);font-weight:1000;margin:8px 0 4px;overflow-wrap:anywhere}
+.metric-note{font-size:10px;color:var(--muted);line-height:1.5}
+.red{color:var(--red)!important}.green{color:var(--green)!important}
+.cyan{color:var(--cyan)!important}.gold{color:var(--gold)!important}
+.two-col{display:grid;grid-template-columns:1fr;gap:8px;margin-top:9px}
+.bias{padding:13px;border:1px solid #285a8e;border-radius:11px;background:#0a1b34}
+.bias .value{font-size:clamp(22px,6vw,30px);font-weight:1000;overflow-wrap:anywhere}
+.pill{display:inline-block;padding:5px 8px;margin-top:5px;border-radius:7px;background:#183657;color:#c5def7;font-size:10px;font-weight:800}
+.statsgrid{margin-top:9px}
+.stat-label{font-size:10px;color:#c7d9f1;line-height:1.5}
+.stat-value{font-size:23px;font-weight:1000;margin:6px 0;overflow-wrap:anywhere}
 .stat-note{font-size:10px;color:var(--muted)}
-.green{color:var(--green)!important}
-.red{color:var(--red)!important}
-.cyan{color:var(--cyan)!important}
-.gold{color:var(--gold)!important}
-.progress{
-  height:7px;border-radius:20px;
-  background:#183555;overflow:hidden;margin-top:10px;
-}
-.progress span{display:block;height:100%;background:var(--cyan);width:0}
-.status-grid{display:grid;grid-template-columns:1fr;gap:8px}
-.status-item{
-  padding:11px;border:1px solid #254766;
-  background:#0a1a30;border-radius:10px;
-}
-.status-name{font-size:11px;color:#c7d9ef}
-.status-value{font-size:12px;font-weight:800;margin-top:7px}
-.dot{
-  display:inline-block;width:8px;height:8px;
-  border-radius:50%;margin-right:6px;background:var(--red);
-}
+.statusgrid{display:grid;grid-template-columns:1fr;gap:8px}
+.status{padding:11px;background:#0a1b32;border:1px solid #264766;border-radius:10px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);margin-right:7px}
 .dot.ok{background:var(--green)}
-.notice{
-  margin-top:10px;padding:11px;
-  border:1px solid #087dff;border-radius:9px;
-  background:#071e3a;color:#c9e5ff;
-  font-size:11px;line-height:1.6;
-}
-.tab{display:none}
-.tab.active{display:block}
-.form-grid{display:grid;grid-template-columns:1fr;gap:9px}
-label{display:block;font-size:11px;color:#b9cee8;margin-bottom:5px}
-input,select{
-  width:100%;min-width:0;
-  background:#06152a;color:white;
-  border:1px solid #285582;
-  border-radius:8px;padding:11px;
-}
-.action{
-  background:#0d2a4e;border:1px solid #2374bc;
-  color:white;border-radius:9px;
-  padding:11px 13px;font-weight:800;
-}
-.action.primary{background:#0755a5;border-color:#20baff}
-.action.danger{border-color:#8c344c;color:#ff9aa8}
+.notice{margin-top:10px;padding:11px;border:1px solid #087dff;border-radius:10px;background:#071d38;color:#d2e7ff;font-size:11px;line-height:1.7}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.table-wrap{overflow-x:auto;width:100%}
-table{width:100%;border-collapse:collapse;font-size:11px;white-space:nowrap}
-th,td{padding:10px 7px;text-align:left;border-bottom:1px solid #1a3b60}
-th{color:#a9c9ed;background:#0b1e37}
-td{color:#f0f6ff}
-.empty{text-align:center;color:var(--muted);padding:18px}
-.subheading{font-size:14px;font-weight:900;margin:4px 0 12px}
-.help{font-size:11px;line-height:1.6;color:var(--muted)}
-.engine-list{display:grid;grid-template-columns:1fr;gap:7px}
-.engine-condition{
-  padding:11px;background:#0a1a31;border:1px solid #20456e;border-radius:9px;
+.btn{padding:10px 12px;border:1px solid #286ba6;border-radius:9px;background:#102b4d;color:white;font-weight:800}
+.btn.primary{background:#0758a7;border-color:#20baff}
+.btn.danger{border-color:#963a50;color:#ffb0ba}
+label{display:block;margin-bottom:5px;font-size:11px;color:#bfd4ee}
+.formgrid{display:grid;grid-template-columns:1fr;gap:10px}
+input,select{
+  display:block;width:100%;min-width:0;padding:11px;
+  color:white;background:#06152a;border:1px solid #285582;border-radius:8px;
 }
-.engine-condition b{display:block;font-size:12px}
-.engine-condition span{font-size:10px;color:var(--muted)}
+.tablewrap{width:100%;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:11px;white-space:nowrap}
+th,td{padding:10px 7px;text-align:left;border-bottom:1px solid #1d3b5d}
+th{color:#b7d5f7;background:#0b1e37}
+.empty{text-align:center;padding:18px;color:var(--muted)}
+.help{font-size:11px;color:var(--muted);line-height:1.6}
+.enginegrid{display:grid;grid-template-columns:1fr;gap:8px}
+.engineitem{padding:11px;background:#0a1b32;border:1px solid #234b75;border-radius:9px}
+.engineitem b{display:block;font-size:12px}.engineitem span{font-size:10px;color:var(--muted)}
+footer{text-align:center;padding:15px;color:#718eaf;font-size:10px}
+
+/* Always-visible app-style navigation */
+.bottomnav{
+  position:fixed!important;z-index:99999!important;
+  left:0!important;right:0!important;bottom:0!important;
+  width:100%!important;transform:none!important;
+  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:4px;padding:7px 5px calc(7px + env(safe-area-inset-bottom));
+  background:#061329!important;
+  border-top:2px solid #1688ff;
+  box-shadow:0 -6px 22px #0008;
+}
+.bottomnav button{
+  min-width:0;min-height:61px;padding:6px 1px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:5px;border:1px solid #244f7d;border-radius:10px;
+  background:#0b203c;color:#dceaff;
+  font-size:clamp(8px,2.45vw,11px);font-weight:950;
+  line-height:1.15;text-align:center;overflow-wrap:anywhere;
+}
+.bottomnav .navicon{display:block;width:22px;height:22px;color:var(--cyan);flex-shrink:0}
+.bottomnav button.active{
+  background:linear-gradient(145deg,#087dff,#064b98);
+  border-color:#20d9ff;color:white;
+  box-shadow:inset 0 0 0 1px #1688ff;
+}
+.bottomnav button.active .navicon{color:white}
 #settingsModal{
-  display:none;position:fixed;inset:0;z-index:50;
-  background:#000b;padding:20px;align-items:center;justify-content:center;
+  display:none;position:fixed;inset:0;z-index:100000;
+  align-items:center;justify-content:center;
+  padding:18px;background:#000b;
 }
 #settingsModal.open{display:flex}
 .modal{
   width:100%;max-width:440px;max-height:85vh;overflow:auto;
-  border:1px solid #2875b6;background:#091a33;
-  border-radius:14px;padding:16px;
+  padding:16px;background:#091a33;border:1px solid #2875b6;border-radius:14px;
 }
-.modal-head{display:flex;align-items:center;justify-content:space-between}
-.modal-head h2{font-size:18px}
-footer{text-align:center;color:#718eaf;font-size:10px;padding:15px 10px}
-
-/* Fixed single-row bottom navigation */
-.bottom-nav{
-  position:fixed;z-index:30;bottom:0;left:0;right:0;
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:5px;
-  padding:8px 7px calc(8px + env(safe-area-inset-bottom));
-  background:#061329f5;
-  border-top:1px solid #2371b3;
-  backdrop-filter:blur(16px);
-}
-.bottom-nav button{
-  min-width:0;min-height:57px;
-  padding:8px 2px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
-  border:1px solid #194b7b;border-radius:10px;
-  background:#0b1e38;color:#c4dcf7;
-  font-size:clamp(8px,2.35vw,11px);
-  font-weight:1000;line-height:1.2;
-  overflow-wrap:anywhere;
-}
-.bottom-nav button .nav-icon{font-size:18px;line-height:1}
-.bottom-nav button.active{
-  color:white;border-color:#21bfff;
-  background:linear-gradient(145deg,#075fc0,#0c3671);
-  box-shadow:inset 0 0 0 1px #1688ff;
-}
+.modalhead{display:flex;align-items:center;justify-content:space-between}
 @media(min-width:600px){
   main{padding:20px}
-  .market-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .split-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .stats-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .status-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .engine-list{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .bottom-nav{left:50%;right:auto;transform:translateX(-50%);width:min(100%,760px)}
+  .marketgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .two-col{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .statsgrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .statusgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .enginegrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bottomnav{left:50%!important;right:auto!important;width:min(100%,760px)!important;transform:translateX(-50%)!important}
 }
 </style>
 </head>
-
 <body>
+
 <header>
-  <div class="header-art"></div>
-  <div class="watermark left">BULL</div>
-  <div class="watermark right">BEAR</div>
-
-  <div class="header-row">
-    <svg class="brand-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-      <path d="M4 39H44" stroke="currentColor" stroke-width="2"/>
-      <rect x="7" y="26" width="7" height="13" rx="1" fill="currentColor"/>
-      <rect x="19" y="18" width="7" height="21" rx="1" fill="currentColor"/>
-      <rect x="31" y="8" width="7" height="31" rx="1" fill="currentColor"/>
-      <path d="M5 20L17 13L25 16L42 3M33 3H42V12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-
+  <div class="watermarks"><span>🐂</span><span>🐻</span></div>
+  <div class="brandrow">
+    <div class="logo">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M4 34H36" stroke="currentColor" stroke-width="2"/>
+        <rect x="6" y="22" width="6" height="12" rx="1" fill="currentColor"/>
+        <rect x="17" y="15" width="6" height="19" rx="1" fill="currentColor"/>
+        <rect x="28" y="7" width="6" height="27" rx="1" fill="currentColor"/>
+        <path d="M4 17L14 12L22 15L36 3M28 3H36V11" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </div>
     <div class="brand">
       <h1>GO <span>SMART</span></h1>
       <h1>HYBRID ENGINE</h1>
       <p>ANALYSE • IDENTIFY • DECIDE • SAVE TIME</p>
     </div>
-
-    <div class="menu-wrap">
-      <button class="icon-button" id="menuButton" aria-label="Open menu" aria-expanded="false">⋮</button>
-      <div class="dropdown" id="menuDropdown">
-        <button id="openSettings">⚙ Settings</button>
-        <button data-go="engine">▦ GO SMART Engine</button>
-        <button data-go="journal">▤ Paper Trade Journal</button>
+    <div class="menu">
+      <button class="menu-button" id="menuButton" aria-label="Settings and menu" aria-expanded="false">⋮</button>
+      <div class="dropdown" id="dropdown">
+        <button id="settingsOpen">⚙ SETTINGS</button>
+        <button data-open="dashboard">▦ Dashboard</button>
+        <button data-open="screener">⌕ Screener</button>
+        <button data-open="engine">◈ GO SMART Engine</button>
+        <button data-open="journal">▤ Paper Trade Journal</button>
         <button id="exportMenu">⇩ Export Journal CSV</button>
       </div>
     </div>
   </div>
-
   <div class="demo">
-    <span class="demo-icon">▥</span>
-    <div>
-      <strong>DEMO MODE — PAPER TRADING ONLY</strong>
-      <p>Illustrative interface. Live market data and automated signals are not connected.</p>
+    <span class="warn">⚠</span>
+    <div><strong>DEMO MODE — PAPER TRADING ONLY</strong>
+      <p>Live prices, real signals and actual orders are not connected.</p>
     </div>
   </div>
 </header>
 
 <main>
   <!-- DASHBOARD -->
-  <section class="tab active" id="dashboard">
+  <section class="screen active" id="dashboard">
     <div class="panel">
-      <h2 class="section-heading">
-        <span class="symbol">▥</span> MARKET OVERVIEW
-        <span class="right small-muted">DEMO</span>
-      </h2>
-
-      <div class="market-grid">
-        <div class="metric">
-          <div class="metric-label">↗ NIFTY 50</div>
-          <div class="metric-value">—</div>
-          <div class="metric-note">Live feed not connected</div>
-        </div>
-        <div class="metric">
-          <div class="metric-label">↗ BANK NIFTY</div>
-          <div class="metric-value">—</div>
-          <div class="metric-note">Live feed not connected</div>
-        </div>
-        <div class="metric vix">
-          <div class="metric-label red">↘ INDIA VIX</div>
-          <div class="metric-value">—</div>
-          <div class="metric-note">Live feed not connected</div>
-        </div>
+      <h2 class="heading"><span class="heading-icon">▥</span> MARKET OVERVIEW <span class="muted small" style="margin-left:auto">DEMO</span></h2>
+      <div class="marketgrid">
+        <div class="metric"><div class="metric-label">↗ NIFTY 50</div><div class="metric-value">—</div><div class="metric-note">Live feed not connected</div></div>
+        <div class="metric"><div class="metric-label">↗ BANK NIFTY</div><div class="metric-value">—</div><div class="metric-note">Live feed not connected</div></div>
+        <div class="metric"><div class="metric-label red">↘ INDIA VIX</div><div class="metric-value">—</div><div class="metric-note">Live feed not connected</div></div>
       </div>
-
-      <div class="split-grid">
-        <div class="bias-card">
-          <div class="card-label">◎ MARKET BIAS</div>
-          <div class="bias-value">UNCONFIRMED</div>
-          <span class="status-pill">Awaiting market data</span>
-          <div class="progress"><span></span></div>
-        </div>
-        <div class="breadth-card">
-          <div class="card-label">⚖ ADVANCE / DECLINE</div>
-          <div class="bias-value">— / —</div>
-          <div class="metric-note">Market breadth not connected</div>
-        </div>
+      <div class="two-col">
+        <div class="bias"><div class="metric-label">◎ MARKET BIAS</div><div class="value gold" style="margin-top:8px">UNCONFIRMED</div><span class="pill">Awaiting market data</span></div>
+        <div class="bias"><div class="metric-label">⚖ ADVANCE / DECLINE</div><div class="value gold" style="margin-top:8px">— / —</div><div class="metric-note">Market breadth not connected</div></div>
       </div>
-
-      <div class="stats-grid">
-        <div class="stat">
-          <div class="stat-label">QUALIFIED SETUPS</div>
-          <div class="stat-value cyan" id="qualifiedCount">0</div>
-          <div class="stat-note">Manual demo records</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">ACTIVE TRADES</div>
-          <div class="stat-value" id="activeCount">0</div>
-          <div class="stat-note">Paper trades</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">CLOSED TRADES</div>
-          <div class="stat-value" id="closedCount">0</div>
-          <div class="stat-note">Journal records</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">SIMULATED P&amp;L</div>
-          <div class="stat-value" id="totalPnl">—</div>
-          <div class="stat-note">Recorded exits only</div>
-        </div>
+      <div class="statsgrid">
+        <div class="stat"><div class="stat-label">QUALIFIED SETUPS</div><div class="stat-value cyan" id="qualified">0</div><div class="stat-note">Demo candidates</div></div>
+        <div class="stat"><div class="stat-label">ACTIVE TRADES</div><div class="stat-value" id="activeCount">0</div><div class="stat-note">Paper trades</div></div>
+        <div class="stat"><div class="stat-label">CLOSED TRADES</div><div class="stat-value" id="closedCount">0</div><div class="stat-note">Journal records</div></div>
+        <div class="stat"><div class="stat-label">SIMULATED P&amp;L</div><div class="stat-value" id="totalPnl">—</div><div class="stat-note">Recorded exits only</div></div>
       </div>
     </div>
-
     <div class="panel">
-      <h2 class="section-heading"><span class="symbol">◈</span> SYSTEM STATUS</h2>
-      <div class="status-grid">
-        <div class="status-item">
-          <div class="status-name">Market data</div>
-          <div class="status-value"><span class="dot"></span>Not connected</div>
-        </div>
-        <div class="status-item">
-          <div class="status-name">Telegram alerts</div>
-          <div class="status-value"><span class="dot"></span>Not connected</div>
-        </div>
-        <div class="status-item">
-          <div class="status-name">Trading mode</div>
-          <div class="status-value green"><span class="dot ok"></span>Paper only</div>
-        </div>
+      <h2 class="heading"><span class="heading-icon">◈</span> SYSTEM STATUS</h2>
+      <div class="statusgrid">
+        <div class="status"><div class="muted">Market data</div><p><span class="dot"></span><b>Not connected</b></p></div>
+        <div class="status"><div class="muted">Telegram alerts</div><p><span class="dot"></span><b>Not connected</b></p></div>
+        <div class="status"><div class="muted">Trading mode</div><p class="green"><span class="dot ok"></span><b>Paper only</b></p></div>
       </div>
-      <div class="notice">
-        IMPORTANT: A score alone cannot authorize a trade. Confirm location, trigger, stop-loss and risk/reward before recording a simulated entry.
-      </div>
+      <div class="notice">A setup score alone cannot authorize a trade. Confirm the trigger, entry, stop-loss and risk/reward before recording a simulated trade.</div>
     </div>
-
     <div class="panel">
-      <h2 class="section-heading"><span class="symbol">⚡</span> QUICK ACTIONS</h2>
+      <h2 class="heading"><span class="heading-icon">⚡</span> QUICK ACTIONS</h2>
       <div class="actions">
-        <button class="action primary" data-go="screener">⌕ Open Screener</button>
-        <button class="action" data-go="engine">▦ GO SMART Engine</button>
-        <button class="action" data-go="journal">▤ Paper Trade Journal</button>
+        <button class="btn primary" data-open="screener">⌕ Open Screener</button>
+        <button class="btn" data-open="engine">◈ GO SMART Engine</button>
+        <button class="btn" data-open="journal">▤ Paper Trade Journal</button>
       </div>
     </div>
   </section>
 
   <!-- SCREENER -->
-  <section class="tab" id="screener">
+  <section class="screen" id="screener">
     <div class="panel">
-      <h2 class="section-heading"><span class="symbol">⌕</span> STOCK SCREENER</h2>
-      <p class="help">Enter candidates manually. This prototype does not fetch live stocks or calculate technical indicators.</p>
-      <div class="form-grid">
-        <div><label for="stockSymbol">Stock symbol</label><input id="stockSymbol" placeholder="e.g. RELIANCE" maxlength="24"></div>
-        <div><label for="stockDirection">Direction</label><select id="stockDirection"><option>LONG</option><option>SHORT</option></select></div>
-        <div><label for="stockScore">GO SMART score</label><select id="stockScore"><option value="10">10 / 10</option><option value="9" selected>9 / 10</option><option value="8">8 / 10</option><option value="7">7 / 10</option><option value="6">6 / 10</option></select></div>
-        <div><label for="stockStatus">Status</label><select id="stockStatus"><option>Watchlist</option><option>Setup Ready</option><option>Rejected</option></select></div>
+      <h2 class="heading"><span class="heading-icon">⌕</span> STOCK SCREENER</h2>
+      <p class="help">Add candidates manually. This prototype does not fetch live stock data.</p>
+      <div class="formgrid">
+        <div><label for="symbol">STOCK SYMBOL</label><input id="symbol" maxlength="24" placeholder="e.g. RELIANCE"></div>
+        <div><label for="direction">DIRECTION</label><select id="direction"><option>LONG</option><option>SHORT</option></select></div>
+        <div><label for="score">GO SMART SCORE</label><select id="score"><option>10</option><option selected>9</option><option>8</option><option>7</option><option>6</option></select></div>
+        <div><label for="setupStatus">STATUS</label><select id="setupStatus"><option>Watchlist</option><option>Setup Ready</option><option>Rejected</option></select></div>
       </div>
-      <div class="actions"><button class="action primary" id="addSetup">+ Add Candidate</button></div>
+      <div class="actions"><button class="btn primary" id="addSetup">＋ ADD CANDIDATE</button></div>
     </div>
-
     <div class="panel">
-      <h3 class="subheading">SCREENING RESULTS</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>SYMBOL</th><th>SIDE</th><th>SCORE</th><th>STATUS</th><th>ACTION</th></tr></thead>
-          <tbody id="setupRows"></tbody>
-        </table>
-      </div>
-      <p class="help">Per your rules, scores below 9/10 do not qualify. A 9/10 or 10/10 score alone is not a trade signal.</p>
+      <h2 class="heading">SCREENING RESULTS</h2>
+      <div class="tablewrap"><table><thead><tr><th>SYMBOL</th><th>SIDE</th><th>SCORE</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="setupRows"></tbody></table></div>
+      <p class="help">Only manually recorded candidates marked Setup Ready with a score of 9 or 10 count as qualified. They are not verified trading signals.</p>
     </div>
   </section>
 
-  <!-- GO SMART ENGINE -->
-  <section class="tab" id="engine">
+  <!-- ENGINE -->
+  <section class="screen" id="engine">
     <div class="panel">
-      <h2 class="section-heading"><span class="symbol">▦</span> GO SMART ENGINE</h2>
-      <p class="help">The following are the engine's planned checks. They are not being calculated by this static dashboard yet.</p>
-      <div class="engine-list">
-        <div class="engine-condition"><b>01 · EMA Trend</b><span>Trend direction and structure</span></div>
-        <div class="engine-condition"><b>02 · EMA Alignment</b><span>Moving-average alignment</span></div>
-        <div class="engine-condition"><b>03 · 52-Week Strength</b><span>Long-term price strength</span></div>
-        <div class="engine-condition"><b>04 · RSI Strength</b><span>Momentum confirmation</span></div>
-        <div class="engine-condition"><b>05 · MACD Confirmation</b><span>Momentum and crossover</span></div>
-        <div class="engine-condition"><b>06 · Volume Power</b><span>Volume confirmation</span></div>
-        <div class="engine-condition"><b>07 · ADX Strength</b><span>Trend strength</span></div>
-        <div class="engine-condition"><b>08 · Order Flow</b><span>Order-flow confirmation</span></div>
-        <div class="engine-condition"><b>09 · Liquidity</b><span>Liquidity requirements</span></div>
-        <div class="engine-condition"><b>10 · MTF Confirmation</b><span>Multiple timeframe agreement</span></div>
-        <div class="engine-condition"><b>11 · Early Break / Retest</b><span>Direction-aware entry setup</span></div>
-        <div class="engine-condition"><b>12 · Candle / Chart Pattern</b><span>Price-action confirmation</span></div>
+      <h2 class="heading"><span class="heading-icon">◈</span> GO SMART ENGINE</h2>
+      <p class="help">Planned analysis checks. These conditions are not yet calculated by a live analysis backend.</p>
+      <div class="enginegrid">
+        <div class="engineitem"><b>01 · EMA TREND</b><span>Trend direction and structure</span></div>
+        <div class="engineitem"><b>02 · EMA ALIGNMENT</b><span>Moving-average alignment</span></div>
+        <div class="engineitem"><b>03 · 52-WEEK STRENGTH</b><span>Price strength confirmation</span></div>
+        <div class="engineitem"><b>04 · RSI</b><span>Momentum confirmation</span></div>
+        <div class="engineitem"><b>05 · MACD</b><span>Momentum and crossover</span></div>
+        <div class="engineitem"><b>06 · VOLUME POWER</b><span>Volume confirmation</span></div>
+        <div class="engineitem"><b>07 · ADX STRENGTH</b><span>Trend strength</span></div>
+        <div class="engineitem"><b>08 · ORDER FLOW</b><span>Order-flow confirmation</span></div>
+        <div class="engineitem"><b>09 · LIQUIDITY</b><span>Liquidity requirements</span></div>
+        <div class="engineitem"><b>10 · MTF CONFIRMATION</b><span>Multiple timeframe agreement</span></div>
+        <div class="engineitem"><b>11 · BREAKOUT / RETEST</b><span>Direction-aware setup</span></div>
+        <div class="engineitem"><b>12 · CANDLE PATTERN</b><span>Price-action confirmation</span></div>
       </div>
-    </div>
-    <div class="panel">
-      <h3 class="subheading">ENTRY RULES</h3>
-      <div class="notice">
-        SETUP READY is not ENTER NOW. Entry requires a confirmed trigger, acceptable location, hard risk gates and reasonable risk/reward. Late or overextended setups must be rejected.
-      </div>
-      <p class="help">The engine needs a tested calculation backend and verified market data before it can generate genuine screening results.</p>
+      <div class="notice">SETUP READY does not mean ENTER NOW. Live data, tested calculations and risk checks are required before genuine signals can be produced.</div>
     </div>
   </section>
 
   <!-- PAPER TRADE JOURNAL -->
-  <section class="tab" id="journal">
+  <section class="screen" id="journal">
     <div class="panel">
-      <h2 class="section-heading"><span class="symbol">▤</span> PAPER TRADE JOURNAL</h2>
-      <p class="help">All entries here are simulated. No real orders are placed.</p>
-
-      <div class="form-grid">
-        <div><label for="tradeSymbol">Stock symbol</label><input id="tradeSymbol" placeholder="e.g. RELIANCE" maxlength="24"></div>
-        <div><label for="tradeSide">Direction</label><select id="tradeSide"><option>LONG</option><option>SHORT</option></select></div>
-        <div><label for="tradeQty">Quantity</label><input id="tradeQty" type="number" min="1" step="1" value="1"></div>
-        <div><label for="entryPrice">Entry price</label><input id="entryPrice" type="number" min="0.01" step="any" placeholder="0.00"></div>
-        <div><label for="stopPrice">Stop-loss price</label><input id="stopPrice" type="number" min="0.01" step="any" placeholder="0.00"></div>
-        <div><label for="targetOne">Target 1</label><input id="targetOne" type="number" min="0.01" step="any" placeholder="0.00"></div>
-        <div><label for="targetTwo">Target 2</label><input id="targetTwo" type="number" min="0.01" step="any" placeholder="0.00"></div>
+      <h2 class="heading"><span class="heading-icon">▤</span> PAPER TRADE JOURNAL</h2>
+      <p class="help">Simulated trades only. This app does not place orders with a broker.</p>
+      <div class="formgrid">
+        <div><label for="tradeSymbol">STOCK SYMBOL</label><input id="tradeSymbol" maxlength="24" placeholder="e.g. RELIANCE"></div>
+        <div><label for="tradeSide">DIRECTION</label><select id="tradeSide"><option>LONG</option><option>SHORT</option></select></div>
+        <div><label for="qty">QUANTITY</label><input id="qty" type="number" min="1" step="1" value="1"></div>
+        <div><label for="entry">ENTRY PRICE</label><input id="entry" type="number" min=".01" step="any" placeholder="0.00"></div>
+        <div><label for="stop">STOP-LOSS</label><input id="stop" type="number" min=".01" step="any" placeholder="0.00"></div>
+        <div><label for="target1">TARGET 1</label><input id="target1" type="number" min=".01" step="any" placeholder="0.00"></div>
+        <div><label for="target2">TARGET 2</label><input id="target2" type="number" min=".01" step="any" placeholder="0.00"></div>
       </div>
-      <div class="actions"><button class="action primary" id="saveTrade">+ Save Paper Trade</button></div>
-      <p class="help">LONG requires stop &lt; entry &lt; target 1 &lt; target 2. SHORT requires target 2 &lt; target 1 &lt; entry &lt; stop.</p>
+      <div class="actions"><button class="btn primary" id="saveTrade">＋ SAVE PAPER TRADE</button></div>
+      <p class="help">LONG: stop &lt; entry &lt; target 1 &lt; target 2. SHORT: target 2 &lt; target 1 &lt; entry &lt; stop.</p>
     </div>
-
     <div class="panel">
-      <h3 class="s
+      <h2 class="heading">ACTIVE PAPER TRADES</h2>
+      <div class="tablewrap"><table><thead><tr><th>SYMBOL</th><th>SIDE</th><th>QTY</th><th>ENTRY</th><th>SL</th><th>T1</th><th>T2</th><th>ACTION</th></tr></thead><tbody id="activeRows"></tbody></table></div>
+    </div>
+    <div class="panel">
+      <h2 class="heading">CLOSED TRADES &amp; SIMULATED P&amp;L</h2>
+      <div class="tablewrap"><table><thead><tr><th>SYMBOL</th><th>SIDE</th><th>ENTRY</th><th>EXIT</th><th>QTY</th><th>P&amp;L</th></tr></thead><tbody id="closedRows"></tbody></table></div>
+      <div class="actions"><button class="btn" id="exportCsv">⇩ EXPORT JOURNAL CSV</button></div>
+      <p class="help">P&amp;L excludes brokerage, taxes and slippage. Records stay in this browser and are not synced between devices.</p>
+    </div>
+  </section>
+  <footer>GO SMART HYBRID ENGINE · PAPER TRADING PROTOTYPE</footer>
+</main>
+
+<!-- SETTINGS -->
+<div id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+  <div class="modal">
+    <div class="modalhead"><h2 id="settingsTitle">⚙ SETTINGS</h2><button class="menu-button" id="settingsClose" aria-label="Close settings">×</button></div>
+    <div class="notice">Integration status. Settings do not create live connections by themselves.</div>
+    <div class="info"><span class="muted">Market data</span><p class="red">● Not connected</p></div><br>
+    <div class="info"><span class="muted">Telegram alerts</span><p class="red">● Not connected</p></div><br>
+    <div class="info"><span class="muted">Trading mode</span><p class="green">● Paper trading only</p></div><br>
+    <p class="help">Never place bot tokens, API keys, passwords or broker credentials in this public repository.</p>
+    <button class="btn primary" id="settingsDone">DONE</button>
+  </div>
+</div>
+
+<!-- APP-STYLE BOTTOM NAVIGATION: ALWAYS VISIBLE -->
+<nav class="bottomnav" aria-label="Main navigation">
+  <button class="active" data-open="dashboard" aria-label="Dashboard" aria-current="page">
+    <svg class="navicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5M9 21v-7h6v7"/></svg>
+    <span>DASHBOARD</span>
+  </button>
+  <button data-open="screener" aria-label="Screener">
+    <svg class="navicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5M7.5 10.5h6M10.5 7.5v6"/></svg>
+    <span>SCREENER</span>
+  </button>
+  <button data-open="engine" aria-label="GO SMART Engine">
+    <svg class

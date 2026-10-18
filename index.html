@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07120f">
+<title>GO SMART HYBRID ENGINE</title>
+<style>
+:root{color-scheme:dark;--bg:#07100e;--panel:#101e1a;--line:#244a3b;--green:#00e58a;--red:#ff5265;--muted:#9ab0a6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#f4fff9;font:15px system-ui,Arial,sans-serif}
+header{padding:20px 16px;background:#0b1712;border-bottom:1px solid var(--line)}
+.brand{color:var(--green);font-weight:900;font-size:21px;letter-spacing:1px}
+.sub{color:var(--muted);font-size:12px;margin-top:5px}
+main{max-width:1000px;margin:auto;padding:16px}
+.notice{border:1px solid #8a6b24;background:#2a2412;color:#ffdf87;padding:12px;border-radius:10px;margin-bottom:16px;font-size:12px}
+h2{font-size:17px;margin:0 0 12px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:15px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.metric{background:#0a1511;border:1px solid var(--line);padding:12px;border-radius:10px}
+.metric small{display:block;color:var(--muted)}
+.metric strong{display:block;font-size:20px;margin-top:5px}
+.green{color:var(--green)}.red{color:var(--red)}
+nav{display:flex;gap:8px;overflow:auto;margin:14px 0}
+button,select,input{font:inherit}
+nav button,.action{border:1px solid var(--line);border-radius:9px;background:#142720;color:#eafff4;padding:10px 12px;white-space:nowrap}
+nav button.active,.action.primary{background:#006c46;border-color:var(--green)}
+.tab{display:none}.tab.active{display:block}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{text-align:left;padding:10px 5px;border-bottom:1px solid var(--line)}
+th{color:var(--muted)}
+.scroll{overflow-x:auto}
+label{display:block;color:var(--muted);margin:10px 0 5px}
+input,select{width:100%;background:#08130f;color:white;border:1px solid var(--line);border-radius:8px;padding:10px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.muted{color:var(--muted);font-size:12px}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand">GO SMART HYBRID ENGINE</div>
+ <div class="sub">ANALYSE • IDENTIFY • DECIDE • SAVE TIME</div>
+</header>
+<main>
+ <div class="notice"><b>DEMO MODE — PAPER TRADING ONLY</b><br>Illustrative data only. No live market feed, verified signals, or real orders are connected.</div>
+ <section class="panel">
+  <h2>Market Dashboard</h2>
+  <div class="grid">
+   <div class="metric"><small>NIFTY 50</small><strong>—</strong><small>Live feed not connected</small></div>
+   <div class="metric"><small>BANK NIFTY</small><strong>—</strong><small>Live feed not connected</small></div>
+   <div class="metric"><small>Market Bias</small><strong>UNCONFIRMED</strong></div>
+   <div class="metric"><small>Qualified setups</small><strong id="qualified">0</strong><small>Demo records only</small></div>
+  </div>
+ </section>
+ <nav>
+  <button class="active" data-tab="overview">Dashboard</button>
+  <button data-tab="screener">Screener</button>
+  <button data-tab="setups">GO SMART Setups</button>
+  <button data-tab="trades">Paper Trades</button>
+  <button data-tab="journal">Trade Journal</button>
+  <button data-tab="settings">Settings</button>
+ </nav>
+ <section id="overview" class="tab active">
+  <div class="panel"><h2>System Status</h2>
+   <p>Market data: <span class="red">Not connected</span></p>
+   <p>Telegram alerts: <span class="red">Not connected</span></p>
+   <p>Trading mode: <span class="green">Paper / simulated only</span></p>
+   <p class="muted">A setup score alone cannot authorize a trade. Confirm location, trigger, stop-loss and risk/reward before recording any simulated entry.</p>
+  </div>
+ </section>
+ <section id="screener" class="tab">
+  <div class="panel"><h2>LONG / SHORT Screener</h2>
+   <label>Direction</label>
+   <select id="direction"><option>LONG</option><option>SHORT</option></select>
+   <label>Stock symbol</label><input id="symbol" placeholder="e.g. RELIANCE">
+   <label>Setup score (out of 10)</label><select id="score"><option>9</option><option>10</option><option>8</option><option>7</option></select>
+   <label>Setup status</label><select id="status"><option>Watchlist</option><option>Setup ready</option><option>Rejected</option></select>
+   <div class="actions"><button class="action primary" id="addSetup">Add demo record</button></div>
+   <p class="muted">Manually entered demo records are not market recommendations.</p>
+  </div>
+  <div class="panel"><h2>Screening Results</h2><div class="scroll"><table><thead><tr><th>Symbol</th><th>Side</th><th>Score</th><th>Status</th></tr></thead><tbody id="setupRows"><tr><td colspan="4">No records yet.</td></tr></tbody></table></div></div>
+ </section>
+ <section id="setups" class="tab">
+  <div class="panel"><h2>GO SMART Conditions</h2>
+   <p>EMA Trend • EMA Alignment • 52-Week Strength • RSI • MACD</p>
+   <p>Volume • ADX • Order Flow • Liquidity • Multi-timeframe Confirmation</p>
+   <p>Early Break • Retest Setup • Candle Signal • Chart Pattern</p>
+   <p class="muted">These conditions are listed for project reference. They are not currently calculated by this webpage.</p>
+  </div>
+ </section>
+ <section id="trades" class="tab">
+  <div class="panel"><h2>Record Paper Trade</h2>
+   <label>Stock symbol</label><input id="tradeSymbol" placeholder="e.g. RELIANCE">
+   <label>Direction</label><select id="tradeDirection"><option>LONG</option><option>SHORT</option></select>
+   <label>Entry price</label><input id="entry" type="number" step="any" placeholder="0">
+   <label>Stop loss</label><input id="stop" type="number" step="any" placeholder="0">
+   <label>Target 1</label><input id="target1" type="number" step="any" placeholder="0">
+   <label>Target 2</label><input id="target2" type="number" step="any" placeholder="0">
+   <div class="actions"><button class="action primary" id="addTrade">Save simulated trade</button></div>
+   <p class="muted">Records remain in this browser session only; this prototype has no permanent database.</p>
+  </div>
+  <div class="panel"><h2>Active Paper Trades</h2><div class="scroll"><table><thead><tr><th>Symbol</th><th>Side</th><th>Entry</th><th>SL</th><th>T1</th><th>T2</th></tr></thead><tbody id="tradeRows"><tr><td colspan="6">No paper trades yet.</td></tr></tbody></table></div></div>
+ </section>
+ <section id="journal" class="tab">
+  <div class="panel"><h2>Trade Journal</h2><p id="journalCount">Simulated trades recorded: 0</p><p class="muted">No actual brokerage trades or verified profit/loss data are available.</p><button class="action" id="export">Export session records as CSV</button></div>
+ </section>
+ <section id="settings" class="tab">
+  <div class="panel"><h2>Settings & Integrations</h2>
+   <p>Market data: Not configured</p><p>Chartink: Not connected</p><p>TradingView alerts: Not connected</p><p>Telegram backend: Not connected</p>
+   <p class="muted">Never enter API keys, bot tokens, passwords or broker credentials into this static public webpage.</p>
+  </div>
+ </section>
+</main>
+<footer>GO SMART HYBRID ENGINE • Prototype v1 • Paper trading only</footer>
+<script>
+const $=id=>document.getElementById(id);
+document.querySelectorAll('nav button').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b===btn));
+ document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.id===btn.dataset.tab));
+}));
+const setups=[],trades=[];
+function cell(value){const td=document.createElement('td');td.textContent=value;return td}
+function renderSetups(){
+ const body=$('setupRows');body.replaceChildren();
+ if(!setups.length){const tr=document.createElement('tr');const td=cell('No records yet.');td.colSpan=4;tr.append(td);body.append(tr);return}
+ setups.forEach(s=>{const tr=document.createElement('tr');[s.symbol,s.direction,s.score+'/10',s.status].forEach(v=>tr.append(cell(v)));body.append(tr)});
+ $('qualified').textContent=setups.filter(s=>Number(s.score)>=9&&s.status==='Setup ready').length;
+}
+$('addSetup').addEventListener('click',()=>{
+ const symbol=$('symbol').value.trim().toUpperCase();if(!symbol){alert('Enter a stock symbol first.');return}
+ setups.push({symbol,direction:$('direction').value,score:$('score').value,status:$('status').value});
+ renderSetups();$('symbol').value='';
+});
+function renderTrades(){
+ const body=$('tradeRows');body.replaceChildren();
+ if(!trades.length){const tr=document.createElement('tr');const td=cell('No paper trades yet.');td.colSpan=6;tr.append(td);body.append(tr)}
+ trades.forEach(t=>{const tr=document.createElement('tr');[t.symbol,t.direction,t.entry,t.stop,t.t1,t.t2].forEach(v=>tr.append(cell(v)));body.append(tr)});
+ $('journalCount').textContent='Simulated trades recorded: '+trades.length;
+}
+$('addTrade').addEventListener('click',()=>{
+ const symbol=$('tradeSymbol').value.trim().toUpperCase();
+ const direction=$('tradeDirection').value;
+ const entry=Number($('entry').value),stop=Number($('stop').value),t1=Number($('target1').value),t2=Number($('target2').value);
+ if(!symbol||![$('entry').value,$('stop').value,$('target1').value,$('target2').value].every(v=>v.trim()!=='')||![entry,stop,t1,t2].every(Number.isFinite)||![entry,stop,t1,t2].every(v=>v>0)){alert('Enter a symbol and four positive prices.');return}
+ if(direction==='LONG'&&!(stop<entry&&t1>entry&&t2>t1)){alert('For LONG: stop < entry < target 1 < target 2.');return}
+ if(direction==='SHORT'&&!(stop>entry&&t1<entry&&t2<t1)){alert('For SHORT: target 2 < target 1 < entry < stop.');return}
+ trades.push({symbol,direction,entry,stop,t1,t2});renderTrades();
+ ['tradeSymbol','entry','stop','target1','target2'].forEach(id=>$(id).value='');
+});
+$('export').addEventListener('click',()=>{
+ const rows=[['Symbol','Direction','Entry','Stop','Target 1','Target 2'],...trades.map(t=>[t.symbol,t.direction,t.entry,t.stop,t.t1,t.t2])];
+ const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');
+ const url=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));const a=document.createElement('a');a.href=url;a.download='go-smart-paper-journal.csv';a.click();URL.revokeObjectURL(url);
+});
+</script>
+</body>
+  </html>
+  

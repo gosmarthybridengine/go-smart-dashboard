@@ -3,350 +3,228 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#061329">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#06152b">
 <title>GO SMART HYBRID ENGINE</title>
 <style>
-:root{
---bg:#061329;--panel:#0a2040;--card:#0d2548;
---line:#1769b0;--cyan:#16d8ff;--text:#f4f8ff;
---muted:#a9bfdc;--green:#00e6a0;--red:#ff496b;
---yellow:#ffd34d
-}
-[data-theme=light]{
---bg:#edf4fc;--panel:#fff;--card:#f8fbff;
---line:#b5d0ef;--cyan:#087fba;--text:#112641;
---muted:#526b88;--green:#008f69;--red:#d52d50;
---yellow:#9c6a00
-}
+:root{--bg:#061329;--panel:#0b2040;--card:#102b50;--line:#1a5d91;--text:#f2f7ff;--muted:#a8bfd9;--cyan:#21d9ff;--green:#00dfa0;--red:#ff5472;--yellow:#ffd34d}
 *{box-sizing:border-box}
-body{
-margin:0;background:var(--bg);color:var(--text);
-font:14px/1.45 system-ui,Arial,sans-serif;
-padding-bottom:90px
-}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.app{max-width:1000px;margin:auto;padding:12px}
-header{
-display:flex;align-items:center;gap:9px;
-position:relative;margin-bottom:14px
-}
-button,.btn{
-border:1px solid var(--line);border-radius:12px;
-background:var(--card);color:var(--text);
-padding:10px;font-weight:750
-}
-.icon{
-width:42px;height:42px;flex-shrink:0;
-display:grid;place-items:center;font-size:22px;
-color:var(--cyan)
-}
-.brand{flex:1;min-width:0}
-.brand h1{font-size:17px;line-height:1.15;margin:0;font-weight:950}
-.brand h1 span{color:var(--cyan)}
-.tagline{font-size:9px;letter-spacing:1px;color:var(--muted)}
-.demo{
-border:1px solid var(--yellow);color:var(--yellow);
-padding:6px;border-radius:9px;font-size:9px;
-font-weight:900;text-align:center
-}
-.menu{
-display:none;position:absolute;right:0;top:48px;z-index:20;
-background:var(--panel);border:1px solid var(--cyan);
-border-radius:13px;padding:8px;width:205px
-}
-.menu.open{display:grid;gap:7px}
-.menu button{text-align:left}
-.section{
-background:var(--panel);border:1px solid var(--line);
-border-radius:17px;padding:13px;margin-bottom:12px;
-box-shadow:0 7px 22px #0002;min-width:0
-}
-.heading{
-display:flex;justify-content:space-between;
-align-items:center;gap:8px;margin-bottom:12px
-}
-.heading h2{font-size:14px;margin:0;font-weight:950}
-.muted{color:var(--muted);font-size:11px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.card{
-min-width:0;padding:12px;border:1px solid var(--line);
-border-radius:13px;background:var(--card);overflow-wrap:anywhere
-}
-.label{font-size:10px;color:var(--muted);font-weight:800}
-.value{font-size:25px;font-weight:950;margin:6px 0}
-.green{color:var(--green)}.red{color:var(--red)}
-.yellow{color:var(--yellow)}.cyan{color:var(--cyan)}
-.wide{grid-column:1/-1}
-.status{padding:10px;border:1px solid var(--line);border-radius:10px;margin-top:8px}
-.notice{
-border:1px solid var(--cyan);border-radius:11px;
-padding:10px;color:var(--muted);font-size:11px;margin-top:10px
-}
-.page{display:none}
-.page.active{display:block}
-label{display:block;color:var(--muted);font-size:11px;font-weight:800;margin:10px 0 5px}
-input,select,textarea{
-width:100%;padding:11px;border-radius:10px;
-border:1px solid var(--line);background:var(--bg);
-color:var(--text);min-width:0
-}
-textarea{min-height:70px}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
-.primary{background:#075dbb;border-color:var(--cyan);color:white}
-.danger{color:var(--red)}
-table{border-collapse:collapse;width:100%;font-size:11px}
-th,td{padding:9px;text-align:left;border-bottom:1px solid var(--line)}
+body{margin:0;background:var(--bg);color:var(--text);font:14px Arial,sans-serif}
+header{padding:16px;background:var(--panel);border-bottom:1px solid var(--line)}
+header h1{font-size:20px;margin:0;color:var(--cyan)}
+header p{margin:5px 0 0;color:var(--muted);font-size:11px;letter-spacing:1px}
+main{max-width:950px;margin:auto;padding:12px 12px 100px}
+.page{display:none}.page.active{display:block}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+h2{font-size:15px;margin:0 0 12px;color:var(--cyan)}
+h3{font-size:13px;margin:10px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.metric{background:var(--card);padding:12px;border-radius:10px;min-width:0}
+.metric small{color:var(--muted)}
+.metric strong{display:block;font-size:22px;margin-top:5px;overflow-wrap:anywhere}
+label{display:block;font-size:11px;color:var(--muted);margin:9px 0 5px}
+input,select,textarea{width:100%;padding:11px;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:8px}
+button{cursor:pointer;touch-action:manipulation}
+.btn{padding:10px 12px;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:9px;font-weight:bold}
+.primary{background:#086bd0;border-color:var(--cyan)}
+.good{color:var(--green)}.bad{color:var(--red)}.warn{color:var(--yellow)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.row>*{flex:1}
+.notice{font-size:11px;color:var(--muted);line-height:1.5;padding:10px;background:var(--bg);border-radius:8px;margin-top:10px}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line)}
 th{color:var(--muted)}
-.tablewrap{overflow-x:auto;margin-top:10px}
-.bottom{
-position:fixed;bottom:0;left:0;right:0;z-index:30;
-display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
-gap:4px;padding:7px 5px calc(7px + env(safe-area-inset-bottom));
-background:var(--bg);border-top:1px solid var(--line)
-}
-.nav{
-display:flex;flex-direction:column;align-items:center;
-justify-content:center;gap:4px;min-width:0;min-height:59px;
-padding:5px 1px;border:1px solid transparent;
-background:transparent;color:var(--muted);
-font-size:9px;line-height:1.1
-}
-.nav .ico{font-size:21px}
-.nav.active{background:#075dbb;border-color:var(--cyan);color:white}
-.modal{
-display:none;position:fixed;inset:0;z-index:50;
-background:#000b;align-items:flex-end;justify-content:center;
-padding:10px
-}
-.modal.open{display:flex}
-.modalbox{
-width:100%;max-width:520px;max-height:85dvh;
-overflow:auto;background:var(--panel);
-border:1px solid var(--cyan);border-radius:17px;padding:15px
-}
-.close{float:right}
-@media(min-width:650px){
-.grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-.form{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:360px){
-.app{padding:8px}.brand h1{font-size:14px}
-.demo{font-size:8px}.nav{font-size:8px}
-}
+.tablewrap{overflow-x:auto}
+.bottom{position:fixed;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;padding:7px 4px;background:#07172cf5;border-top:1px solid var(--line);z-index:10}
+.bottom button{min-width:0;border:1px solid transparent;background:transparent;color:var(--muted);padding:8px 1px;border-radius:9px;font-size:9px;font-weight:bold}
+.bottom button.active{background:#075cb0;color:white;border-color:var(--cyan)}
+.bottom span{display:block;font-size:19px;margin-bottom:4px}
+.event{border-bottom:1px solid var(--line);padding:10px 0;font-size:12px}
+.event small{display:block;color:var(--muted);margin-top:4px}
+@media(min-width:650px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
 </style>
 </head>
 <body>
-<div class="app">
 <header>
-<button class="icon" id="alertsButton" aria-label="Alerts">♧<sup id="alertCount"></sup></button>
-<div class="brand">
-<h1>GO <span>SMART</span><br>HYBRID ENGINE</h1>
-<div class="tagline">ANALYSE · IDENTIFY · DECIDE · SAVE TIME</div>
-</div>
-<div class="demo">DEMO MODE<br>PAPER ONLY</div>
-<button class="icon" id="menuButton" aria-label="Settings">⋮</button>
-<div class="menu" id="menu">
-<button data-modal="settingsModal">⚙ Settings & Theme</button>
-<button data-modal="integrationsModal">↗ Integrations</button>
-<button id="menuAlerts">♧ Alerts & Watchlist</button>
-<button id="exportAll">⇩ Export All Trades</button>
-</div>
+<h1>GO SMART HYBRID ENGINE</h1>
+<p>LONG & SHORT · QUALITY OVER QUANTITY</p>
 </header>
-
 <main>
 <section class="page active" id="dashboard">
-<div class="section">
-<div class="heading"><h2>▥ MARKET OVERVIEW</h2><span class="muted">DEMO</span></div>
+<div class="card">
+<h2>MARKET OVERVIEW</h2>
 <div class="grid">
-<div class="card"><div class="label">↗ NIFTY 50</div><div class="value">—</div><div class="muted">Live feed not connected</div></div>
-<div class="card"><div class="label">↗ BANK NIFTY</div><div class="value">—</div><div class="muted">Live feed not connected</div></div>
-<div class="card"><div class="label red">↘ INDIA VIX</div><div class="value">—</div><div class="muted">Live feed not connected</div></div>
-<div class="card"><div class="label">◎ MARKET BIAS</div><div class="value yellow">UNCONFIRMED</div><div class="muted">Awaiting market data</div></div>
-<div class="card"><div class="label">⚖ ADVANCE / DECLINE</div><div class="value">— / —</div><div class="muted">Not connected</div></div>
-<div class="card"><div class="label">✦ QUALIFIED SETUPS</div><div class="value cyan" id="setupCount">0</div><div class="muted">Manual records</div></div>
-<div class="card"><div class="label">▤ ACTIVE TRADES</div><div class="value" id="activeCount">0</div><div class="muted">Paper trades</div></div>
-<div class="card"><div class="label">◔ WIN RATE</div><div class="value" id="winRate">—</div><div class="muted">Closed trades</div></div>
-<div class="card"><div class="label">▥ TOTAL P&L</div><div class="value green" id="totalPnl">—</div><div class="muted">Simulated only</div></div>
+<div class="metric"><small>NIFTY 50</small><strong id="nifty">—</strong><small>Connect market data</small></div>
+<div class="metric"><small>SENSEX</small><strong id="sensex">—</strong><small>Connect market data</small></div>
+<div class="metric"><small>MARKET BIAS</small><strong id="bias">UNKNOWN</strong><small>Not connected</small></div>
+<div class="metric"><small>QUALIFIED SETUPS</small><strong id="qualified">0</strong><small>Saved candidate records</small></div>
+<div class="metric"><small>OPEN PAPER TRADES</small><strong id="openCount">0</strong></div>
+<div class="metric"><small>CLOSED TRADES</small><strong id="closedCount">0</strong></div>
+<div class="metric"><small>WIN RATE</small><strong id="winRate">—</strong></div>
+<div class="metric"><small>REALIZED PAPER P&L</small><strong id="pnl">0.00</strong></div>
 </div>
 </div>
-<div class="section">
-<div class="heading"><h2>⚙ SYSTEM STATUS</h2><button data-modal="integrationsModal">View details ↗</button></div>
-<div class="status">Market data: <b class="red">Not connected</b></div>
-<div class="status">Telegram alerts: <b class="red">Not connected</b></div>
-<div class="status">Trading mode: <b class="green">Paper / simulated only</b></div>
-<div class="notice">A setup score alone cannot authorize a trade. Confirm the trigger, stop-loss, targets and risk/reward. No real orders are placed.</div>
-</div>
-<div class="section">
-<div class="heading"><h2>⚡ QUICK ACTIONS</h2></div>
-<div class="grid">
-<button data-page="screener">⌕ Screener</button>
-<button data-page="engine">↗ GO SMART Engine</button>
-<button data-page="paper">＋ Paper Trade</button>
-<button data-page="journal">▤ Trade Journal</button>
-</div>
-</div>
+<div class="card"><h2>TOP PICKS — LONG</h2><div id="longPicks">No qualified LONG picks.</div></div>
+<div class="card"><h2>TOP PICKS — SHORT</h2><div id="shortPicks">No qualified SHORT picks.</div></div>
+<div class="card"><h2>RECENT EVENTS</h2><div id="events">No events yet.</div></div>
+<div class="notice">Prototype mode. Index values, screened stocks, TradingView signals and Telegram are not live until their integrations are configured and tested.</div>
 </section>
 
 <section class="page" id="screener">
-<div class="section">
-<div class="heading"><h2>⌕ CHARTINK SCREENER</h2></div>
-<label>Chartink screener URL</label>
-<input id="chartinkUrl" placeholder="https://chartink.com/screener/...">
-<div class="actions">
-<button class="primary" id="openChartink">↗ Open Chartink</button>
-<button id="saveChartink">Save URL</button>
+<div class="card">
+<h2>SCREENER CONNECTION</h2>
+<p>Connect your saved Chartink LONG and SHORT scans through a supported backend or alert integration.</p>
+<label>Chartink LONG scan URL</label><input id="longUrl" placeholder="Paste your saved LONG screener URL">
+<label>Chartink SHORT scan URL</label><input id="shortUrl" placeholder="Paste your saved SHORT screener URL">
+<div class="row"><button class="btn primary" onclick="saveUrls()">Save connections</button><button class="btn" onclick="openScan('long')">Open LONG scan</button><button class="btn" onclick="openScan('short')">Open SHORT scan</button></div>
+<div class="notice" id="scanStatus">A saved URL opens Chartink; it does not automatically import scan results.</div>
 </div>
-<div class="notice">This opens your external screener. It does not automatically import results.</div>
+<div class="card">
+<h2>ADD / REVIEW CANDIDATE</h2>
+<label>Symbol</label><input id="sSymbol" placeholder="e.g. NSE:RELIANCE">
+<div class="grid">
+<div><label>Direction</label><select id="sSide"><option>LONG</option><option>SHORT</option></select></div>
+<div><label>Trade type</label><select id="sType"><option>SWING</option><option>POSITIONAL</option></select></div>
+<div><label>Score / 10</label><input id="sScore" type="number" min="0" max="10" value="9"></div>
+<div><label>Timeframe</label><select id="sTf"><option>1D</option><option>4H</option><option>1H</option><option>1W</option></select></div>
 </div>
-<div class="section">
-<div class="heading"><h2>✦ MANUAL SCREENER RESULTS</h2></div>
-<div class="form">
-<div><label>Symbol</label><input id="scanSymbol" placeholder="RELIANCE"></div>
-<div><label>Score (0–10)</label><input id="scanScore" type="number" min="0" max="10"></div>
-<div><label>Direction</label><select id="scanDirection"><option>LONG</option><option>SHORT</option><option>WATCH</option></select></div>
-<div><label>Pattern</label><input id="scanPattern" placeholder="Breakout / retest"></div>
+<label>Entry reference</label><input id="sEntry" type="number" step="any">
+<label>Initial stop-loss</label><input id="sStop" type="number" step="any">
+<label>Confirmed trigger and all risk gates passed?</label><select id="sConfirmed"><option value="no">No — WAIT / MONITOR</option><option value="yes">Yes — confirmed</option></select>
+<div class="row"><button class="btn primary" onclick="addSetup()">Save candidate</button></div>
 </div>
-<div class="actions"><button class="primary" id="saveSetup">＋ Save Setup</button></div>
-<div class="tablewrap"><table><thead><tr><th>Symbol</th><th>Score</th><th>Direction</th><th>Pattern</th></tr></thead><tbody id="setupRows"></tbody></table></div>
-</div>
+<div class="card"><h2>SAVED CANDIDATES</h2><div class="tablewrap"><table><thead><tr><th>Symbol</th><th>Side</th><th>Type</th><th>Score</th><th>Decision</th><th>Action</th></tr></thead><tbody id="setupRows"></tbody></table></div></div>
 </section>
 
 <section class="page" id="engine">
-<div class="section">
-<div class="heading"><h2>↗ GO SMART HYBRID ENGINE</h2></div>
-<p class="muted">Record your reviewed setup and open its TradingView chart. Scores are manual, not verified live signals.</p>
-<div class="form">
-<div><label>Symbol</label><input id="engineSymbol" placeholder="NSE:RELIANCE"></div>
-<div><label>Timeframe</label><select id="timeframe"><option value="5">5 minutes</option><option value="15">15 minutes</option><option value="60">1 hour</option><option value="240">4 hours</option><option value="1D" selected>1 day</option><option value="1W">1 week</option></select></div>
-<div><label>Score (0–10)</label><input id="engineScore" type="number" min="0" max="10" value="0"></div>
-<div><label>Direction</label><select id="engineSide"><option>LONG</option><option>SHORT</option></select></div>
-<div><label>Entry</label><input id="engineEntry" type="number" step="any"></div>
-<div><label>Stop-loss</label><input id="engineStop" type="number" step="any"></div>
-<div><label>Target 1</label><input id="engineTarget1" type="number" step="any"></div>
-<div><label>Target 2</label><input id="engineTarget2" type="number" step="any"></div>
+<div class="card">
+<h2>GO SMART HYBRID ENGINE</h2>
+<label>Select candidate</label><select id="engineCandidate" onchange="loadCandidate()"></select>
+<div class="row"><button class="btn" onclick="openTV()">Open TradingView chart</button><button class="btn primary" onclick="toPaper()">Use in Paper Trade</button></div>
+<div id="engineDetails" class="notice">Select a candidate to review its direction, score, entry and stop.</div>
 </div>
-<label>Analysis notes</label><textarea id="engineNotes" placeholder="Trend, trigger, volume, risk/reward..."></textarea>
-<div class="actions">
-<button class="primary" id="openTradingView">↗ TradingView Chart</button>
-<button id="saveEngine">Save Setup</button>
-<button id="toPaper">Use in Paper Trade</button>
+<div class="card">
+<h2>ATR / RRR CALCULATOR</h2>
+<label>Direction</label><select id="cSide"><option>LONG</option><option>SHORT</option></select>
+<label>Entry</label><input id="cEntry" type="number" step="any">
+<label>Initial stop-loss</label><input id="cStop" type="number" step="any">
+<div class="row"><button class="btn primary" onclick="calculate()">Calculate T1 / T2 / T3</button></div>
+<div id="calcResult" class="notice">Enter valid entry and stop levels.</div>
 </div>
-<div class="notice">TradingView opens externally. Live candles and automated signals require a supported data feed and tested backend.</div>
-</div>
-<div class="section"><div class="heading"><h2>SAVED ENGINE SETUPS</h2></div><div class="tablewrap"><table><thead><tr><th>Symbol</th><th>Score</th><th>Direction</th><th>Action</th></tr></thead><tbody id="engineRows"></tbody></table></div></div>
 </section>
 
 <section class="page" id="paper">
-<div class="section">
-<div class="heading"><h2>＋ PAPER TRADING</h2><span class="muted">NO REAL ORDERS</span></div>
-<div class="form">
-<div><label>Symbol</label><input id="paperSymbol" placeholder="RELIANCE"></div>
-<div><label>Side</label><select id="paperSide"><option>LONG</option><option>SHORT</option></select></div>
-<div><label>Entry price</label><input id="paperEntry" type="number" step="any"></div>
-<div><label>Quantity</label><input id="paperQty" type="number" min="1" value="1"></div>
-<div><label>Stop-loss</label><input id="paperStop" type="number" step="any"></div>
-<div><label>Target</label><input id="paperTarget" type="number" step="any"></div>
+<div class="card">
+<h2>PAPER ENGINE</h2>
+<div class="grid">
+<div class="metric"><small>Execution mode</small><strong id="engineMode">MANUAL</strong></div>
+<div class="metric"><small>Auto-paper</small><strong id="autoStatus">OFF</strong></div>
 </div>
-<label>Notes</label><textarea id="paperNotes"></textarea>
-<div class="actions"><button class="primary" id="recordTrade">＋ Record Paper Entry</button></div>
+<label>Enable automatic simulated entries</label><select id="autoMode"><option value="off">OFF — manual paper trades</option><option value="on">ON — test price updates only</option></select>
+<div class="notice">Auto mode in this browser only processes candidates when you submit a price update below. It does not monitor live prices in the background.</div>
 </div>
-<div class="section"><div class="heading"><h2>ACTIVE PAPER TRADES</h2></div><div class="tablewrap"><table><thead><tr><th>Symbol</th><th>Side</th><th>Entry</th><th>Qty</th><th>SL / Target</th><th>Action</th></tr></thead><tbody id="activeRows"></tbody></table></div></div>
+<div class="card">
+<h2>MANUAL PAPER ENTRY</h2>
+<label>Symbol</label><input id="pSymbol" placeholder="e.g. NSE:RELIANCE">
+<div class="grid">
+<div><label>Direction</label><select id="pSide"><option>LONG</option><option>SHORT</option></select></div>
+<div><label>Trade type</label><select id="pType"><option>SWING</option><option>POSITIONAL</option></select></div>
+<div><label>Score</label><input id="pScore" type="number" min="0" max="10" value="9"></div>
+<div><label>Timeframe</label><select id="pTf"><option>1D</option><option>4H</option><option>1H</option><option>1W</option></select></div>
+</div>
+<label>Simulated entry price</label><input id="pEntry" type="number" step="any">
+<label>Initial stop-loss</label><input id="pStop" type="number" step="any">
+<label>Quantity</label><input id="pQty" type="number" min="1" step="1" value="1">
+<label>Confirmed entry trigger and all risk gates passed?</label><select id="pConfirmed"><option value="no">No</option><option value="yes">Yes</option></select>
+<div class="row"><button class="btn primary" onclick="openPaper()">Confirm paper entry</button></div>
+<div id="paperMessage" class="notice">Paper trading only. No broker order is sent.</div>
+</div>
+<div class="card">
+<h2>PRICE UPDATE / SIMULATION TEST</h2>
+<label>Simulated current price</label><input id="marketPrice" type="number" step="any">
+<div class="row"><button class="btn primary" onclick="processPrice()">Process price update</button></div>
+<div class="notice">This tests target and stop logic using the supplied price. It is not a live feed.</div>
+</div>
+<div class="card">
+<h2>OPEN PAPER TRADES</h2><div class="tablewrap"><table><thead><tr><th>Symbol</th><th>Type</th><th>Side</th><th>Entry</th><th>Open Qty</th><th>Current SL</th><th>Targets</th><th>Action</th></tr></thead><tbody id="openRows"></tbody></table></div>
+</div>
 </section>
 
 <section class="page" id="journal">
-<div class="section">
-<div class="heading"><h2>▤ PAPER TRADE JOURNAL</h2><button id="exportCsv">⇩ Excel CSV</button></div>
+<div class="card">
+<h2>TRADE JOURNAL</h2>
 <div class="grid">
-<div class="card"><div class="label">CLOSED TRADES</div><div class="value" id="closedCount">0</div></div>
-<div class="card"><div class="label">WIN RATE</div><div class="value" id="journalWinRate">—</div></div>
-<div class="card"><div class="label">REALIZED P&L</div><div class="value" id="realizedPnl">0.00</div></div>
-<div class="card"><div class="label">OPEN TRADES</div><div class="value" id="journalOpen">0</div></div>
+<div class="metric"><small>Realized P&L</small><strong id="jPnl">0.00</strong></div>
+<div class="metric"><small>Win rate</small><strong id="jWin">—</strong></div>
+<div class="metric"><small>Closed trades</small><strong id="jClosed">0</strong></div>
+<div class="metric"><small>Open trades</small><strong id="jOpen">0</strong></div>
 </div>
+<div class="row"><button class="btn primary" onclick="exportCsv()">Export CSV for Excel</button><button class="btn" onclick="clearClosed()">Clear closed history</button></div>
+<div class="tablewrap"><table><thead><tr><th>Symbol</th><th>Type</th><th>Side</th><th>Entry</th><th>Exit</th><th>Qty</th><th>P&L</th><th>Exit reason</th></tr></thead><tbody id="journalRows"></tbody></table></div>
 </div>
-<div class="section">
-<div class="heading"><h2>WEEKLY / MONTHLY REPORTS</h2></div>
-<label>Report period</label>
-<select id="reportPeriod"><option value="week">This week</option><option value="month">This month</option><option value="all">All time</option></select>
-<div class="grid" style="margin-top:10px">
-<div class="card"><div class="label">PERIOD TRADES</div><div class="value" id="periodCount">0</div></div>
-<div class="card"><div class="label">PERIOD WIN RATE</div><div class="value" id="periodWin">—</div></div>
-<div class="card"><div class="label">PERIOD P&L</div><div class="value" id="periodPnl">0.00</div></div>
-</div>
-<div class="actions"><button class="primary" id="exportReport">⇩ Download Report CSV</button><button id="exportAllTrades">Export All Trades</button></div>
-</div>
-<div class="section"><div class="heading"><h2>TRADE HISTORY</h2><button class="danger" id="clearHistory">Clear History</button></div><div class="tablewrap"><table><thead><tr><th>Opened</th><th>Closed</th><th>Symbol</th><th>Side</th><th>Entry</th><th>Exit</th><th>Qty</th><th>P&L</th></tr></thead><tbody id="historyRows"></tbody></table></div></div>
+<div class="card"><h2>ENTRY / EXIT ALERT LOG</h2><div id="alertLog">No alerts yet.</div></div>
 </section>
 </main>
-</div>
 
-<nav class="bottom">
-<button class="nav active" data-page="dashboard"><span class="ico">⌂</span><span>DASHBOARD</span></button>
-<button class="nav" data-page="screener"><span class="ico">⌕</span><span>SCREENER</span></button>
-<button class="nav" data-page="engine"><span class="ico">▥</span><span>GO SMART<br>ENGINE</span></button>
-<button class="nav" data-page="paper"><span class="ico">＋</span><span>PAPER TRADE</span></button>
-<button class="nav" data-page="journal"><span class="ico">▤</span><span>TRADE JOURNAL</span></button>
+<nav class="bottom" aria-label="Main navigation">
+<button class="active" data-page="dashboard"><span>⌂</span>Dashboard</button>
+<button data-page="screener"><span>⌕</span>Screener</button>
+<button data-page="engine"><span>⌁</span>GO SMART</button>
+<button data-page="paper"><span>▤</span>Paper Trade</button>
+<button data-page="journal"><span>▥</span>Journal</button>
 </nav>
-
-<div class="modal" id="alertsModal"><div class="modalbox">
-<button class="close" data-close="alertsModal">×</button><h2>♧ ALERTS & WATCHLIST</h2>
-<p class="muted">Local reminders only. These do not monitor live prices.</p>
-<label>Symbol</label><input id="alertSymbol" placeholder="RELIANCE">
-<label>Condition / Reminder</label><input id="alertCondition" placeholder="Breakout above 2500">
-<label>Source</label><select id="alertSource"><option>Manual reminder</option><option>TradingView</option><option>Chartink</option></select>
-<div class="actions"><button class="primary" id="addAlert">＋ Add Alert</button></div>
-<div id="alertsList"></div>
-<div class="notice">Live alerts require an external alert service or a secure backend.</div>
-</div></div>
-
-<div class="modal" id="settingsModal"><div class="modalbox">
-<button class="close" data-close="settingsModal">×</button><h2>⚙ SETTINGS</h2>
-<label>Theme</label><select id="theme"><option value="dark">Dark Blue</option><option value="light">Light</option></select>
-<div class="actions"><button class="primary" id="saveTheme">Save Theme</button></div>
-</div></div>
-
-<div class="modal" id="integrationsModal"><div class="modalbox">
-<button class="close" data-close="integrationsModal">×</button><h2>↗ INTEGRATIONS</h2>
-<div class="status"><b>Chartink</b><p class="muted">Save a screener URL in the Screener tab.</p></div>
-<div class="status"><b>TradingView</b><p class="muted">Opens charts externally; no chart data is read back.</p></div>
-<div class="status"><b>Telegram</b><p class="muted">Requires a secure backend. Never put your bot token in public HTML.</p></div>
-<div class="status"><b>Market data</b><p class="muted">Live prices require a supported provider or broker API.</p></div>
-</div></div>
-
-<div class="modal" id="exitModal"><div class="modalbox">
-<button class="close" data-close="exitModal">×</button><h2>Close Paper Trade</h2>
-<input type="hidden" id="exitId">
-<label>Exit price</label><input id="exitPrice" type="number" step="any">
-<label>Exit notes</label><textarea id="exitNotes"></textarea>
-<div class="actions"><button class="primary" id="confirmExit">Confirm Exit</button></div>
-</div></div>
 
 <script>
 "use strict";
 const $=id=>document.getElementById(id);
-const KEY={trades:"goSmartTrades",setups:"goSmartSetups",alerts:"goSmartAlerts",prefs:"goSmartPrefs"};
-function load(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}}
-function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch{alert("Browser storage unavailable. Export your CSV backup.");return false}}
-let trades=load(KEY.trades,[]),setups=load(KEY.setups,[]),alerts=load(KEY.alerts,[]),prefs=load(KEY.prefs,{theme:"dark",chartink:""});
-const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const money=n=>Number(n||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
-const date=d=>d?new Date(d).toLocaleDateString():"—";
-function go(p){document.querySelectorAll(".page").forEach(x=>x.classList.toggle("active",x.id===p));document.querySelectorAll(".nav").forEach(x=>x.classList.toggle("active",x.dataset.page===p));$("menu").classList.remove("open");window.scrollTo(0,0);renderAll()}
-document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
-$("menuButton").onclick=()=>$("menu").classList.toggle("open");
-document.addEventListener("click",e=>{if(!$("menu").contains(e.target)&&e.target!==$("menuButton"))$("menu").classList.remove("open")});
-document.querySelectorAll("[data-modal]").forEach(b=>b.addEventListener("click",()=>{$("menu").classList.remove("open");$(b.dataset.modal).classList.add("open")}));
-document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>$(b.dataset.close).classList.remove("open")));
-document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("open")}));
-$("alertsButton").onclick=()=>{$("alertsModal").classList.add("open");renderAlerts()};
-$("menuAlerts").onclick=()=>{$("menu").classList.remove("open");$("alertsModal").classList.add("open");renderAlerts()};
-$("saveTheme").onclick=()=>{prefs.theme=$("theme").value;document.documentElement.dataset.theme=prefs.theme;save(KEY.prefs,prefs);$("settingsModal").classList.remove("open")};
-$("theme").onchange=()=>document.documentElement.dataset.theme=$("theme").value;
-$("chartinkUrl").value=prefs.chartink||"";
-$("saveChartink").onclick=()=>{prefs.chartink=$("chartinkUrl").value.trim();save(KEY.prefs,prefs);alert("Chartink URL saved in this browser.")};
-$("openChartink").onclick=()=>{let u=$("chartinkUrl").value.trim()||prefs.chartink;if(!u)u="https://chartink.com/screener/";try{const x=new URL(u);if(!["http:","https:"].includes(x.protocol))throw 0;window.open(x.href,"_blank","noopener")}catch{alert("Enter a valid Chartink URL.")}};
-$("openTradingView").onclick=()=>{let s=$("engineSymbol").value.trim();if(!s){alert("Enter a stock symbol first.");return}let u="https://www.tradingview.com/chart/?symbol="+encodeURIComponent(s)+"&interval="+encodeURIComponent($("timeframe").value);window.open(u,"_blank","noopener")};
-$("saveSetup").onclick=()=>{let symbol=$("scanSymbol").value.trim().toUpperCase(),score=Number($("scanScore").value);if(!symbol||!Number.isFinite(score)||score<0||score>10){alert("Enter a symbol and score from 0 to 10.");return}setups.unshift({id:uid(),symbol,score,direction:$("scanDirection").value,pattern:$("scanPattern").value,created:new Date().toISOString()});save(KEY.setups,setups);$("scanSymbol").value="";$("scanScore").value="";$("scanPattern"
+const KEY="gosmart_auto_paper_v1";
+let db=loadDb();
+function loadDb(){try{return JSON.parse(localStorage.getItem(KEY))||{setups:[],trades:[],events:[],urls:{}}}catch(e){return{setups:[],trades:[],events:[],urls:{}}}}
+function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
+function id(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function money(n){return Number(n||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}
+function log(message,symbol="",type="",side=""){db.events.unshift({id:id(),at:new Date().toISOString(),message,symbol,type,side});db.events=db.events.slice(0,150)}
+function nav(page){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===page));document.querySelectorAll(".bottom button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));window.scrollTo({top:0,behavior:"smooth"});if(page==="engine")renderCandidateSelect();renderAll()}
+document.querySelectorAll(".bottom button").forEach(b=>b.addEventListener("click",()=>nav(b.dataset.page)));
+function saveUrls(){db.urls.long=$("longUrl").value.trim();db.urls.short=$("shortUrl").value.trim();save();$("scanStatus").textContent="URLs saved locally. Actual scan-result import still requires an integration backend."}
+function openScan(side){let u=db.urls[side]||$(""+side+"Url").value.trim();if(!u){alert("Paste and save the Chartink "+side.toUpperCase()+" URL first.");return}try{if(!/^https?:\/\//i.test(u))throw 0;window.open(u,"_blank","noopener")}catch(e){alert("Enter a valid http/https URL.")}}
+function decision(s){if(Number(s.score)<9)return"NO TRADE";if(s.confirmed!=="yes")return"WAIT / MONITOR";if(!s.entry||!s.stop)return"WAIT / MONITOR";let r=s.side==="LONG"?s.entry-s.stop:s.stop-s.entry;if(r<=0)return"NO TRADE";return"ENTER NOW"}
+function addSetup(){let symbol=$("sSymbol").value.trim().toUpperCase(),side=$("sSide").value,type=$("sType").value,score=Number($("sScore").value),entry=Number($("sEntry").value),stop=Number($("sStop").value),confirmed=$("sConfirmed").value;if(!symbol||!Number.isInteger(score)||score<0||score>10){alert("Enter a symbol and score from 0 to 10.");return}let s={id:id(),symbol,side,type,score,entry:entry>0?entry:null,stop:stop>0?stop:null,confirmed,timeframe:$("sTf").value,created:new Date().toISOString()};s.decision=decision(s);db.setups.unshift(s);log("Candidate saved — "+s.decision,symbol,type,side);save();$("sSymbol").value=""}
+function renderSetups(){$("setupRows").innerHTML=db.setups.map(s=>`<tr><td>${esc(s.symbol)}</td><td class="${s.side==="LONG"?"good":"bad"}">${esc(s.side)}</td><td>${esc(s.type)}</td><td>${s.score}/10</td><td>${esc(decision(s))}</td><td><button class="btn" onclick="selectSetup('${s.id}')">Review</button></td></tr>`).join("")||'<tr><td colspan="6">No candidates saved.</td></tr>'}
+function renderCandidateSelect(){let old=$("engineCandidate").value;$("engineCandidate").innerHTML=db.setups.map(s=>`<option value="${s.id}">${esc(s.symbol)} · ${s.side} · ${s.type} · ${s.score}/10</option>`).join("");if(db.setups.some(s=>s.id===old))$("engineCandidate").value=old;loadCandidate()}
+function selectSetup(id){nav("engine");$("engineCandidate").value=id;loadCandidate()}
+function loadCandidate(){let s=db.setups.find(x=>x.id===$("engineCandidate").value);if(!s){$("engineDetails").textContent="No candidate selected.";return} $("cSide").value=s.side;$("cEntry").value=s.entry||"";$("cStop").value=s.stop||"";$("engineDetails").innerHTML=`<b>${esc(s.symbol)}</b> · ${esc(s.side)} · ${esc(s.type)}<br>Score: ${s.score}/10<br>Decision: <b>${esc(decision(s))}</b><br>Timeframe: ${esc(s.timeframe)}<br>Entry: ${s.entry||"—"} · Stop: ${s.stop||"—"}`}
+function openTV(){let s=db.setups.find(x=>x.id===$("engineCandidate").value);if(!s){alert("Select a candidate first.");return}let symbol=s.symbol.includes(":")?s.symbol:"NSE:"+s.symbol;window.open("https://www.tradingview.com/chart/?symbol="+encodeURIComponent(symbol),"_blank","noopener")}
+function calculate(){let side=$("cSide").value,e=Number($("cEntry").value),sl=Number($("cStop").value),r=side==="LONG"?e-sl:sl-e;if(!(e>0&&sl>0&&r>0)){$("calcResult").textContent="Invalid levels: LONG stop must be below entry; SHORT stop must be above entry.";return}let sign=side==="LONG"?1:-1;let t1=e+sign*r,t2=e+sign*2*r,t3=e+sign*3*r;$("calcResult").innerHTML=`Risk per share: <b>${money(r)}</b><br>T1 (1R): <b>${money(t1)}</b><br>T2 (2R): <b>${money(t2)}</b><br>T3 (3R): <b>${money(t3)}</b><br>RRR: 1:1 / 1:2 / 1:3`}
+function toPaper(){let s=db.setups.find(x=>x.id===$("engineCandidate").value);if(!s){alert("Select a candidate first.");return}$("pSymbol").value=s.symbol;$("pSide").value=s.side;$("pType").value=s.type;$("pScore").value=s.score;$("pTf").value=s.timeframe;$("pEntry").value=s.entry||"";$("pStop").value=s.stop||"";$("pConfirmed").value=s.confirmed;nav("paper")}
+function openPaper(){let symbol=$("pSymbol").value.trim().toUpperCase(),side=$("pSide").value,type=$("pType").value,score=Number($("pScore").value),entry=Number($("pEntry").value),stop=Number($("pStop").value),qty=Number($("pQty").value),confirmed=$("pConfirmed").value;if(!symbol||!(entry>0&&stop>0&&Number.isInteger(qty)&&qty>0)){alert("Enter symbol, entry, stop and whole-number quantity.");return}let r=side==="LONG"?entry-stop:stop-entry;if(r<=0){alert("Invalid stop-loss for the selected direction.");return}if(score<9||confirmed!=="yes"){alert("Entry rejected: score must be at least 9 and the trigger must be confirmed.");return}if(db.trades.some(t=>t.status==="OPEN"&&t.symbol===symbol&&t.side===side&&t.type===type)){alert("An active trade already exists for this symbol, direction and type.");return}let sign=side==="LONG"?1:-1,t={id:id(),symbol,side,type,score,timeframe:$("pTf").value,entry,initialStop:stop,currentSL:stop,t1:entry+sign*r,t2:entry+sign*2*r,t3:entry+sign*3*r,qty,openQty:qty,bookedQty:0,realized:0,status:"OPEN",stage:0,opened:new Date().toISOString(),exitReason:"",notes:"",costs:0};db.trades.unshift(t);log("ENTER NOW — "+type,symbol,type,side);$("paperMessage").textContent="Paper entry recorded. No broker order was sent.";save()}
+function eventAlert(t,msg){log(msg,t.symbol,t.type,t.side);$("paperMessage").textContent=msg}
+function finishQty(t,qty,price,reason){qty=Math.min(t.openQty,Math.max(0,qty));if(!qty)return;t.realized+=(t.side==="LONG"?price-t.entry:t.entry-price)*qty;t.openQty-=qty;t.bookedQty+=qty;t.exit=price;t.exitReason=reason;if(t.openQty<=0){t.openQty=0;t.status="CLOSED";t.closed=new Date().toISOString();t.pnl=t.realized-(Number(t.costs)||0)}}
+function crossed(t,price,level){return t.side==="LONG"?price>=level:price<=level}
+function stopped(t,price,level){return t.side==="LONG"?price<=level:price>=level}
+function processPosition(t,price){if(t.status!=="OPEN"||t.openQty<=0)return;
+if(stopped(t,price,t.currentSL)){let reason=t.stage===0?"INITIAL SL HIT — EXIT FULL OPEN POSITION":"TSL HIT — EXIT REMAINING POSITION";finishQty(t,t.openQty,t.currentSL,reason);eventAlert(t,reason);return}
+if(t.type==="SWING"){
+if(t.stage===0&&crossed(t,price,t.t1)){let q=Math.ceil(t.qty*0.5);q=Math.min(q,t.openQty);finishQty(t,q,t.t1,"T1 HIT — BOOK 50%");t.stage=1;t.currentSL=t.t1;eventAlert(t,"T1 HIT — BOOK 50%");eventAlert(t,"MOVE SL TO T1 — REMAINING 50%")}
+if(t.status==="OPEN"&&t.stage===1&&crossed(t,price,t.t2)){finishQty(t,t.openQty,t.t2,"T2 HIT — BOOK REMAINING 50%");eventAlert(t,"T2 HIT — BOOK REMAINING 50%")}
+}else{
+if(t.stage===0&&crossed(t,price,t.t1)){t.stage=1;eventAlert(t,"T1 HIT — FIRST PROFIT LEVEL")}
+if(t.stage===1&&crossed(t,price,t.t2)){t.stage=2;t.currentSL=t.t1;eventAlert(t,"T2 HIT — MOVE TSL TO T1")}
+if(t.stage===2&&crossed(t,price,t.t3)){t.stage=3;t.currentSL=t.t2;eventAlert(t,"T3 HIT — MOVE TSL TO T2")}
+}}
+function processPrice(){let price=Number($("marketPrice").value);if(!(price>0)){alert("Enter a positive simulated price.");return}let n=0;db.trades.filter(t=>t.status==="OPEN").forEach(t=>{processPosition(t,price);n++});if($("autoMode").value==="on"){db.setups.filter(s=>decision(s)==="ENTER NOW").forEach(s=>{if(db.trades.some(t=>t.status==="OPEN"&&t.symbol===s.symbol&&t.side===s.side&&t.type===s.type))return;let r=s.side==="LONG"?s.entry-s.stop:s.stop-s.entry,sign=s.side==="LONG"?1:-1;if(!(r>0))return;let qty=Number($("pQty").value)||1;db.trades.unshift({id:id(),symbol:s.symbol,side:s.side,type:s.type,score:s.score,timeframe:s.timeframe,entry:s.entry,initialStop:s.stop,currentSL:s.stop,t1:s.entry+sign*r,t2:s.entry+sign*2*r,t3:s.entry+sign*3*r,qty,openQty:qty,bookedQty:0,realized:0,status:"OPEN",stage:0,opened:new Date().toISOString(),exitReason:"",costs:0});log("AUTO PAPER ENTRY — "+s.type,s.symbol,s.type,s.side)})}log("Price update processed: "+money(price)+"; "+n+" existing position(s) checked.");save();alert("Price update processed. Review Paper Trade and Journal. This is not a live price feed.")}
+function manualClose(id){let t=db.trades.find(x=>x.id===id&&x.status==="OPEN");if(!t)return;let p=Number(prompt("Enter simulated exit price for "+t.symbol));if(!(p>0))return;finishQty(t,t.openQty,p,"MANUAL PAPER EXIT");eventAlert(t,"MANUAL PAPER EXIT");save()}
+function renderPaper(){$("autoStatus").textContent=$("autoMode").value==="on"?"ON — TEST ONLY":"OFF";$("engineMode").textContent=$("autoMode").value==="on"?"AUTO PAPER":"MANUAL";$("openRows").innerHTML=db.trades.filter(t=>t.status==="OPEN").map(t=>`<tr><td>${esc(t.symbol)}</td><td>${t.type}</td><td>${t.side}</td><td>${money(t.entry)}</td><td>${t.openQty}</td><td>${money(t.currentSL)}</td><td>${money(t.t1)} / ${money(t.t2)} / ${t.type==="POSITIONAL"?money(t.t3):"—"}</td><td><button class="btn" onclick="manualClose('${t.id}')">Close</button></td></tr>`).join("")||'<tr><td colspan="8">No open paper trades.</td></tr>'}
+function renderJournal(){let closed=db.trades.filter(t=>t.status==="CLOSED"),open=db.trades.filter(t=>t.status==="OPEN"),pnl=closed.reduce((a,t)=>a+(t.pnl||0),0),wins=closed.filter(t=>(t.pnl||0)>0).length;$("jPnl").textContent=money(pnl);$("jWin").textContent=closed.length?Math.round(wins/closed.length*100)+"%":"—";$("jClosed").textContent=closed.length;$("jOpen").textContent=open.length;$("journalRows").innerHTML=closed.map(t=>`<tr><td>${esc(t.symbol)}</td><td>${t.type}</td><td>${t.side}</td><td>${money(t.entry)}</td><td>${money(t.exit)}</td><td>${t.qty}</td><td>${money(t.pnl)}</td><td>${esc(t.exitReason)}</td></tr>`).join("")||'<tr><td colspan="8">No closed trades yet.</td></tr>'}
+function renderEvents(){let html=db.events.slice(0,12).map(e=>`<div class="event"><b>${esc(e.message)}</b><small>${esc(e.symbol)} ${esc(e.type)} ${esc(e.side)} · ${new Date(e.at).toLocaleString()}</small></div>`).join("")||"No events yet.";$("events").innerHTML=html;$("alertLog").innerHTML=html}
+function renderDashboard(){let setups=db.setups.filter(s=>decision(s)==="ENTER NOW"),open=db.trades.filter(t=>t.status==="OPEN"),closed=db.trades.filter(t=>t.status==="CLOSED"),pnl=closed.reduce((a,t)=>a+(t.pnl||0),0),wins=closed.filter(t=>(t.pnl||0)>0).length;$("qualified").textContent=setups.length;$("openCount").textContent=open.length;$("closedCount").textContent=closed.length;$("pnl").textContent=money(pnl);$("winRate").textContent=closed.length?Math.round(wins/closed.length*100)+"%":"—";$("longPicks").innerHTML=setups.filter(s=>s.side==="LONG").slice(0,2).map(s=>`<div class="event"><b>${esc(s.symbol)}</b> · ${s.score}/10 · ${s.type}<small>Entry ${s.entry} · SL ${s.stop}</small><button class="btn" onclick="selectSetup('${s.id}')">Review</button></div>`).join("")||"No qualifying LONG picks."; $("shortPicks").innerHTML=setups.filter(s=>s.side==="SHORT").slice(0,2).map(s=>`<div class="event"><b>${esc(s.symbol)}</b> · ${s.score}/10 · ${s.type}<small>Entry ${s.entry} · SL ${s.stop}</small><button class="btn" onclick="selectSetup('${s.id}')">Review</button></div>`).join("")||"No qualifying SHORT picks.";renderEvents()}
+function exportCsv(){let rows=[["Symbol","Direction","Type","Score","Entry","Exit","Original Qty","Booked Qty","P&L","Exit Reason","Status"],...db.trades.map(t=>[t.symbol,t.side,t.type,t.score,t.entry,t.exit||"",t.qty,t.bookedQty,t.pnl??t.realized,t.exitReason,t.status])];let csv=rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\r\n");let a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}));a.download="go-smart-paper-journal.csv";a.click();URL.revokeObjectURL(a.href)}
+function clearClosed(){if(!confirm("Delete closed paper-trade history?"))return;db.trades=db.trades.filter(t=>t.status!=="CLOSED");save()}
+function renderAll(){renderSetups();renderCandidateSelect();renderPaper();renderJournal();renderDashboard()}
+$("autoMode").addEventListener("change",()=>{renderPaper();$("paperMessage").textContent=$("autoMode").value==="on"?"Auto-paper test mode enabled. No background/live monitoring.":"Manual paper mode enabled."});
+$("longUrl").value=db.urls.long||"";$("shortUrl").value=db.urls.short||"";
+renderAll();
+</script>
+</body>
+</html>
